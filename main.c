@@ -37,6 +37,7 @@
 #define SYSCTL_RCGC2_R          (*((volatile unsigned long *)0x400FE108))
 // 2. Declarations Section
 //   Global Variables
+unsigned long AS; //eja
 
 //   Function Prototypes
 void PortF_Init(void);
@@ -65,6 +66,15 @@ int main(void){
     // g) VT signal goes high
     // h) wait 250ms
     // i) VT signal goes low
+		SetReady(); //eja
+		WaitForASLow(); //eja
+		ClearReady(); //eja
+		Delay1ms(10); //eja
+		WaitForASHigh(); //eja
+		Delay1ms(250); //eja
+		SetVT(); //eja
+		Delay1ms(250); //eja
+		ClearVT(); //eja
   }
 }
 // Subroutine to initialize port F pins for input and output
@@ -100,6 +110,9 @@ void PortF_Init(void){ volatile unsigned long delay;
 // Outputs: None
 void WaitForASLow(void){
 // write this function
+	do {
+		AS = GPIO_PORTF_DATA_R&0x10;
+	} while (AS == 0x10);
 }
 
 // Subroutine reads AS input and waits for signal to be low
@@ -109,6 +122,9 @@ void WaitForASLow(void){
 // Outputs: None
 void WaitForASHigh(void){
 // write this function
+	do {
+		AS = GPIO_PORTF_DATA_R&0x10;
+	} while (AS == 0x01);
 }
 
 // Subroutine sets VT high
@@ -117,6 +133,7 @@ void WaitForASHigh(void){
 // Notes:   friendly means it does not affect other bits in the port
 void SetVT(void){
 // write this function
+	GPIO_PORTF_DATA_R = GPIO_PORTF_DATA_R | 0x02; //eja
 }
 
 // Subroutine clears VT low
@@ -125,6 +142,7 @@ void SetVT(void){
 // Notes:   friendly means it does not affect other bits in the port
 void ClearVT(void){
 // write this function
+	GPIO_PORTF_DATA_R = GPIO_PORTF_DATA_R & ~0x02; //eja
 }
 
 // Subroutine sets Ready high
@@ -133,6 +151,7 @@ void ClearVT(void){
 // Notes:   friendly means it does not affect other bits in the port
 void SetReady(void){
 // write this function
+	GPIO_PORTF_DATA_R = GPIO_PORTF_DATA_R | 0x08; //eja
 }
 
 
@@ -142,6 +161,7 @@ void SetReady(void){
 // Notes:   friendly means it does not affect other bits in the port
 void ClearReady(void){
 // write this function
+	GPIO_PORTF_DATA_R = GPIO_PORTF_DATA_R & ~0x08; //eja
 }
 
 // Subroutine to delay in units of milliseconds
@@ -150,6 +170,13 @@ void ClearReady(void){
 // Notes:   assumes 80 MHz clock
 void Delay1ms(unsigned long msec){
 // write this function
-
+	unsigned long i; //eja
+	while (msec > 0) { //eja
+		i = 13333;
+		while (i > 0) { //eja
+			i = i - 1; //eja
+		} //eja
+		msec = msec - 1; //eja
+	}
 }
 
