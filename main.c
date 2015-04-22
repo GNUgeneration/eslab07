@@ -110,9 +110,9 @@ void PortF_Init(void){ volatile unsigned long delay;
 // Outputs: None
 void WaitForASLow(void){
 // write this function
-	do {
-		AS = GPIO_PORTF_DATA_R&0x10;
-	} while (AS == 0x10);
+	do { //eja
+		AS = GPIO_PORTF_DATA_R&0x10; //eja
+	} while (AS == 0x10); //eja
 }
 
 // Subroutine reads AS input and waits for signal to be low
@@ -122,9 +122,9 @@ void WaitForASLow(void){
 // Outputs: None
 void WaitForASHigh(void){
 // write this function
-	do {
-		AS = GPIO_PORTF_DATA_R&0x10;
-	} while (AS == 0x01);
+	do { //eja
+		AS = GPIO_PORTF_DATA_R&0x10; //eja
+	} while (AS == 0x01); //eja
 }
 
 // Subroutine sets VT high
@@ -172,7 +172,7 @@ void Delay1ms(unsigned long msec){
 // write this function
 	unsigned long i; //eja
 	while (msec > 0) { //eja
-		i = 13333;
+		i = 1333; //eja
 		while (i > 0) { //eja
 			i = i - 1; //eja
 		} //eja
