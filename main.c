@@ -69,9 +69,9 @@ int main(void){
 		SetReady(); //eja
 		WaitForASLow(); //eja
 		ClearReady(); //eja
-		Delay1ms(10); //eja
+		Delay1ms(7); //eja
 		WaitForASHigh(); //eja
-		Delay1ms(260); //eja
+		Delay1ms(240); //eja
 		SetVT(); //eja
 		Delay1ms(250); //eja
 		ClearVT(); //eja
