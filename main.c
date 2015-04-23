@@ -69,9 +69,9 @@ int main(void){
 		SetReady(); //eja
 		WaitForASLow(); //eja
 		ClearReady(); //eja
-		Delay1ms(7); //eja
+		Delay1ms(10); //eja
 		WaitForASHigh(); //eja
-		Delay1ms(255); //eja
+		Delay1ms(250); //eja
 		SetVT(); //eja
 		Delay1ms(250); //eja
 		ClearVT(); //eja
@@ -123,8 +123,8 @@ void WaitForASLow(void){
 void WaitForASHigh(void){
 // write this function
 	do { //eja
-		AS = GPIO_PORTF_DATA_R&0x10; //eja
-	} while (AS == 0x01); //eja
+		AS = GPIO_PORTF_DATA_R&0x01; //eja
+	} while (AS == 0x10); //eja
 }
 
 // Subroutine sets VT high
