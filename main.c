@@ -69,7 +69,7 @@ int main(void){
 		SetReady();
 		WaitForASLow();
 		ClearReady();
-		Delay1ms(10);
+		Delay1ms(200);
 		WaitForASHigh();
 		Delay1ms(250);
 		SetVT();
