@@ -66,15 +66,15 @@ int main(void){
     // g) VT signal goes high
     // h) wait 250ms
     // i) VT signal goes low
-		SetReady(); //eja
-		WaitForASLow(); //eja
-		ClearReady(); //eja
-		Delay1ms(250); //eja
-		WaitForASHigh(); //eja
-		Delay1ms(250); //eja
-		SetVT(); //eja
-		Delay1ms(255); //eja
-		ClearVT(); //eja
+		SetReady();
+		WaitForASLow();
+		ClearReady();
+		Delay1ms(10);
+		WaitForASHigh();
+		Delay1ms(250);
+		SetVT();
+		Delay1ms(250);
+		ClearVT();
   }
 }
 // Subroutine to initialize port F pins for input and output
@@ -172,7 +172,7 @@ void Delay1ms(unsigned long msec){
 // write this function
 	unsigned long i; //eja
 	while (msec > 0) { //eja
-		i = 13333; //eja
+		i = 16000;
 		while (i > 0) { //eja
 			i = i - 1; //eja
 		} //eja
