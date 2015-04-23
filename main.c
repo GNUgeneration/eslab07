@@ -123,8 +123,8 @@ void WaitForASLow(void){
 void WaitForASHigh(void){
 // write this function
 	do { //eja
-		AS = GPIO_PORTF_DATA_R&0x01; //eja
-	} while (AS == 0x10); //eja
+		AS = GPIO_PORTF_DATA_R&0x10; //eja
+	} while (AS == 0x11); //eja
 }
 
 // Subroutine sets VT high
