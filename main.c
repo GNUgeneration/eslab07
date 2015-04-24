@@ -69,7 +69,7 @@ int main(void){
 		SetReady();
 		WaitForASLow();
 		ClearReady();
-		Delay1ms(200);
+		Delay1ms(20);
 		WaitForASHigh();
 		Delay1ms(250);
 		SetVT();
@@ -172,7 +172,8 @@ void Delay1ms(unsigned long msec){
 // write this function
 	unsigned long i; //eja
 	while (msec > 0) { //eja
-		i = 16000;
+		i = (16000 * 25 / 30);
+		//i = 16000;
 		while (i > 0) { //eja
 			i = i - 1; //eja
 		} //eja
